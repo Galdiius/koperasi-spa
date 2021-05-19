@@ -4,7 +4,7 @@
         <v-divider class="mt-5 mb-5"></v-divider>
         <!-- <IjenisSimpanan @update="handleUpdate"/> -->
         <v-divider class="mt-5 mb-5"></v-divider>
-        <v-data-table :headers="header" :items="jenisSimpanan" :loading="loader" loading-text="Sedang memuat data">
+        <v-data-table :headers="header" mobile-breakpoint="true"  :items="jenisSimpanan" :loading="loader" loading-text="Sedang memuat data">
             <template v-slot:item="row">
                 <tr align="center">
                     <td>{{ row.index+1 }}</td>

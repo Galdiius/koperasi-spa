@@ -11,7 +11,7 @@
         <v-chip class="white--text" color="green">Simpanan wajib</v-chip>
         <v-chip color="warning">Simpanan sukarela</v-chip>
         <v-divider class="mb-5 mt-5"></v-divider>
-        <v-data-table :headers="headers" :items="dataSimpanan" :loading="loader" no-data-text="Belum data apapun" loading-text="Sedang memuat data..">
+        <v-data-table :headers="headers" mobile-breakpoint="true"  :items="dataSimpanan" :loading="loader" no-data-text="Belum data apapun" loading-text="Sedang memuat data..">
             <template v-slot:item="row">
                 <tr align="center">
                     <td>{{ row.item.id_simpanan }}</td>

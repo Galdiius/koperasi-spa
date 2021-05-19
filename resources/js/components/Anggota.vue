@@ -4,6 +4,7 @@
         <v-divider class="mb-5"></v-divider>
         <TambahAnggota @update="handleUpdate"/>
         <v-data-table 
+        mobile-breakpoint="true" 
         :headers="header"
         :items="anggota"
         item-key="nama"

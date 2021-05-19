@@ -2,7 +2,7 @@
     <v-container>
         <h1>History transaksi</h1>
         <v-divider class="mt-5 mb-5"></v-divider>
-        <v-data-table :headers="headers" :loading="loader" :items="items" no-data-text="Anda belum melakukan transaksi apapun">
+        <v-data-table :headers="headers" mobile-breakpoint="true"  :loading="loader" :items="items" no-data-text="Anda belum melakukan transaksi apapun">
             <template v-slot:item="row">
                 <tr align="center">
                     <td>{{ row.index+1 }}</td>

@@ -5,7 +5,7 @@
         <Penarikan @update="handleUpdate"/>
         <v-divider class="mb-5 mt-5"></v-divider>
         <h1>History penarikan</h1>
-        <v-data-table :headers="headers" :items="penarikan" :loading="loader"></v-data-table>
+        <v-data-table mobile-breakpoint="true"  :headers="headers" :items="penarikan" :loading="loader"></v-data-table>
     </v-container>
 </template>
 <script>

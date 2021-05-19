@@ -2093,6 +2093,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -2352,7 +2353,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.$refs.form.validate()) {
         this.loader = true;
-        axios__WEBPACK_IMPORTED_MODULE_0___default().post("api/login", {
+        axios__WEBPACK_IMPORTED_MODULE_0___default().post("https://koperasi-spa.herokuapp.com/api/login", {
           username: this.username,
           password: this.password
         }).then(function (res) {
@@ -2463,7 +2464,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.$refs.form.validate()) {
         this.loader = true;
-        axios__WEBPACK_IMPORTED_MODULE_0___default().post('api/loginAnggota', {
+        axios__WEBPACK_IMPORTED_MODULE_0___default().post('https://koperasi-spa.herokuapp.com/api/loginAnggota', {
           username: this.username,
           password: this.password
         }).then(function (res) {
@@ -2613,7 +2614,7 @@ __webpack_require__.r(__webpack_exports__);
         this.loading = true;
 
         if (this.$refs.formRegis.validate()) {
-          axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://127.0.0.1:8000/api/tambahUser", {
+          axios__WEBPACK_IMPORTED_MODULE_0___default().post("https://koperasi-spa.herokuapp.com/api/tambahUser", {
             nama: this.nama,
             username: this.username,
             password: this.password
@@ -4016,7 +4017,7 @@ __webpack_require__.r(__webpack_exports__);
     } else {
       if (this.$route.name != 'login') {
         this.id_user = localStorage.getItem('adnajdnajdajdasjdadajnj');
-        axios__WEBPACK_IMPORTED_MODULE_0___default().get("api/getUser?id=".concat(this.id_user)).then(function (res) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://koperasi-spa.herokuapp.com/api/getUser?id=".concat(this.id_user)).then(function (res) {
           _this.user = res.data.data;
         });
       }
@@ -4032,7 +4033,7 @@ __webpack_require__.r(__webpack_exports__);
     } else {
       if (this.$route.name != 'login') {
         this.id_user = localStorage.getItem('adnajdnajdajdasjdadajnj');
-        axios__WEBPACK_IMPORTED_MODULE_0___default().get("api/getUser?id=".concat(this.id_user)).then(function (res) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://koperasi-spa.herokuapp.com/api/getUser?id=".concat(this.id_user)).then(function (res) {
           _this2.user = res.data.data;
         });
       }
@@ -4041,7 +4042,7 @@ __webpack_require__.r(__webpack_exports__);
         var _this3 = this;
 
         this.id_user = localStorage.getItem('adnajdnajdajdasjdadajnj');
-        axios__WEBPACK_IMPORTED_MODULE_0___default().get("api/getUser?id=".concat(this.id_user)).then(function (res) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://koperasi-spa.herokuapp.com/api/getUser?id=".concat(this.id_user)).then(function (res) {
           _this3.user = res.data.data;
         });
       });
@@ -4246,12 +4247,12 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.id = this.data.id_pinjaman;
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get("api/getAngsuran?id=".concat(this.id)).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://koperasi-spa.herokuapp.com/api/getAngsuran?id=".concat(this.id)).then(function (res) {
         _this.angsuran = res.data.data;
       });
     });
     this.id = this.data.id_pinjaman;
-    axios__WEBPACK_IMPORTED_MODULE_0___default().get("api/getAngsuran?id=".concat(this.id)).then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://koperasi-spa.herokuapp.com/api/getAngsuran?id=".concat(this.id)).then(function (res) {
       _this2.angsuran = res.data.data;
     });
     console.log(this.data);
@@ -4277,7 +4278,7 @@ __webpack_require__.r(__webpack_exports__);
         confirmButtonText: 'Yes'
       }).then(function (res) {
         if (res.value) {
-          axios__WEBPACK_IMPORTED_MODULE_0___default().post('api/bayarAngsuran', {
+          axios__WEBPACK_IMPORTED_MODULE_0___default().post('https://koperasi-spa.herokuapp.com/api/bayarAngsuran', {
             id_angsuran: id_angsuran,
             id_pinjaman: id_pinjaman,
             jumlah: jumlah,
@@ -4355,7 +4356,7 @@ __webpack_require__.r(__webpack_exports__);
     this.$refs.calendar.checkChange();
 
     if (localStorage.getItem('kode_anggota')) {
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get("api/getAngsuranById?id=".concat(localStorage.getItem('kode_anggota'))).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://koperasi-spa.herokuapp.com/api/getAngsuranById?id=".concat(localStorage.getItem('kode_anggota'))).then(function (res) {
         res.data.data.forEach(function (v) {
           var obj = {
             name: "Tagihan",
@@ -4446,7 +4447,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 
-(axios__WEBPACK_IMPORTED_MODULE_0___default().defaults.baseURL) = 'http://localhost:8000';
+(axios__WEBPACK_IMPORTED_MODULE_0___default().defaults.baseURL) = 'https://koperasi-spa.herokuapp.com/';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     VueQrcode: vue_qrcode__WEBPACK_IMPORTED_MODULE_1__.default
@@ -22836,6 +22837,7 @@ var render = function() {
       _c("v-data-table", {
         staticClass: "elevation-1",
         attrs: {
+          "mobile-breakpoint": "true",
           headers: _vm.header,
           items: _vm.anggota,
           "item-key": "nama",
@@ -24059,6 +24061,7 @@ var render = function() {
       _c("v-data-table", {
         attrs: {
           headers: _vm.headers,
+          "mobile-breakpoint": "true",
           loading: _vm.loader,
           items: _vm.items,
           "no-data-text": "Anda belum melakukan transaksi apapun"
@@ -24121,6 +24124,7 @@ var render = function() {
       _c("v-data-table", {
         attrs: {
           headers: _vm.headers,
+          "mobile-breakpoint": "true",
           items: _vm.history,
           "no-data-text": "Belum ada data history...",
           loading: _vm.loader,
@@ -24349,6 +24353,7 @@ var render = function() {
       _c("v-data-table", {
         attrs: {
           headers: _vm.header,
+          "mobile-breakpoint": "true",
           items: _vm.jenisSimpanan,
           loading: _vm.loader,
           "loading-text": "Sedang memuat data"
@@ -24602,6 +24607,7 @@ var render = function() {
       _vm._v(" "),
       _c("v-data-table", {
         attrs: {
+          "mobile-breakpoint": "true",
           headers: _vm.headers,
           items: _vm.penarikan,
           loading: _vm.loader
@@ -24649,6 +24655,7 @@ var render = function() {
         attrs: {
           headers: _vm.headers,
           loading: _vm.loader,
+          "mobile-breakpoint": "true",
           items: _vm.anggota,
           "loading-text": "Sedang memuat data...",
           "no-data-text": "Tidak ada data"
@@ -24736,6 +24743,7 @@ var render = function() {
       _vm._v(" "),
       _c("v-data-table", {
         attrs: {
+          "mobile-breakpoint": "true",
           headers: _vm.headers,
           items: _vm.pinjaman,
           loading: _vm.loader,
@@ -24854,6 +24862,7 @@ var render = function() {
       _c("v-data-table", {
         attrs: {
           headers: _vm.headers,
+          "mobile-breakpoint": "true",
           items: _vm.dataSimpanan,
           loading: _vm.loader,
           "no-data-text": "Belum data apapun",
@@ -25515,7 +25524,9 @@ var render = function() {
             [
               _c("VueQrcode", {
                 attrs: {
-                  value: "http://localhost:8000/print/" + this.$route.params.id
+                  value:
+                    "https://koperasi-spa.herokuapp.com/print/" +
+                    this.$route.params.id
                 }
               })
             ],
@@ -68403,7 +68414,7 @@ var index = {
 /******/ 			return checkDeferredModules();
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
+/******/ 		var chunkLoadingGlobal = self["webpackChunkkoperasi"] = self["webpackChunkkoperasi"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 		

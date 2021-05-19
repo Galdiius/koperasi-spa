@@ -2,7 +2,7 @@
     <v-container>
         <h1>History transaksi</h1>
         <v-divider class="mt-5 mb-5"></v-divider>
-        <v-data-table :headers="headers" :items="history" no-data-text="Belum ada data history..." :loading="loader" loading-text="Sedang memuat data..."></v-data-table>
+        <v-data-table :headers="headers" mobile-breakpoint="true"  :items="history" no-data-text="Belum ada data history..." :loading="loader" loading-text="Sedang memuat data..."></v-data-table>
     </v-container>
 </template>
 <script>

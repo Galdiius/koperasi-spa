@@ -4,7 +4,7 @@
         <v-divider class="mb-5"></v-divider>
         <InputPinjaman @update="handleUpdate"/>
         <v-divider class="mt-5"></v-divider>
-        <v-data-table :headers="headers" :items="pinjaman" :loading="loader" no-data-text="Tidak ada data" loading-text="Sedang memuat data..">
+        <v-data-table mobile-breakpoint="true"  :headers="headers" :items="pinjaman" :loading="loader" no-data-text="Tidak ada data" loading-text="Sedang memuat data..">
             <template v-slot:item="row">
                 <tr class="text-center">
                     <td>{{ row.index+1 }}</td>
