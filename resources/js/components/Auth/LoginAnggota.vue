@@ -1,6 +1,6 @@
 <template>
     <v-app>
-    <v-container fill-height fluid>
+    <v-container>
       <v-row justify="center" align="center" no-gutters>
         <v-col lg="3">
           <v-card color="warning text-center pt-5" height="300px">

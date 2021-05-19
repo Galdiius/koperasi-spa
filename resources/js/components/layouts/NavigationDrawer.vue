@@ -5,7 +5,7 @@
           floating
           :permanent="sidebarMenu"
           :mini-variant="mini()"
-          v-show="this.$route.name != 'login'"
+          
           :src="img"
           >
                 <v-list dense color="" >

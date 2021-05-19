@@ -23016,7 +23016,9 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("NavigationDrawer", { attrs: { sidebarMenu: _vm.sidebarMenu } }),
+      this.$route.name != "login"
+        ? _c("NavigationDrawer", { attrs: { sidebarMenu: _vm.sidebarMenu } })
+        : _vm._e(),
       _vm._v(" "),
       _c(
         "v-content",
@@ -23094,7 +23096,6 @@ var render = function() {
     [
       _c(
         "v-container",
-        { attrs: { "fill-height": "", fluid: "" } },
         [
           _c(
             "v-row",
@@ -23246,7 +23247,6 @@ var render = function() {
     [
       _c(
         "v-container",
-        { attrs: { "fill-height": "", fluid: "" } },
         [
           _c(
             "v-row",
@@ -24953,14 +24953,6 @@ var render = function() {
   return _c(
     "v-navigation-drawer",
     {
-      directives: [
-        {
-          name: "show",
-          rawName: "v-show",
-          value: this.$route.name != "login",
-          expression: "this.$route.name != 'login'"
-        }
-      ],
       attrs: {
         app: "",
         floating: "",

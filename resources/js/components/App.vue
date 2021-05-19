@@ -8,7 +8,7 @@
             </v-btn>
         </v-app-bar>
         
-        <NavigationDrawer :sidebarMenu="sidebarMenu"/>
+        <NavigationDrawer :sidebarMenu="sidebarMenu" v-if="this.$route.name != 'login'"/>
 
         <v-content>
             <v-container fluid>
