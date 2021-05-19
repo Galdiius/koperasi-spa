@@ -57,7 +57,7 @@ export default {
       if (this.$refs.form.validate()) {
         this.loader = true
         axios
-          .post("api/login", {
+          .post("https://koperasi-spa.herokuapp.com/api/login", {
             username: this.username,
             password: this.password,
           })
