@@ -56,7 +56,7 @@ export default {
       login(){
           if(this.$refs.form.validate()){
             this.loader = true
-              axios.post('api/loginAnggota',{username : this.username,password : this.password}).then(res=>{
+              axios.post('https://koperasi-spa.herokuapp.com/api/loginAnggota',{username : this.username,password : this.password}).then(res=>{
                 this.loader = false
                   if(res.data.message == "berhasil"){
                       localStorage.setItem('login',true)

@@ -102,7 +102,7 @@ export default {
         }else{
             if(this.$route.name != 'login'){
                 this.id_user = localStorage.getItem('adnajdnajdajdasjdadajnj')
-                axios.get(`api/getUser?id=${this.id_user}`).then((res)=>{
+                axios.get(`https://koperasi-spa.herokuapp.com/api/getUser?id=${this.id_user}`).then((res)=>{
                     this.user = res.data.data
                 })
             }
@@ -114,13 +114,13 @@ export default {
         }else{
             if(this.$route.name != 'login'){
                 this.id_user = localStorage.getItem('adnajdnajdajdasjdadajnj')
-                axios.get(`api/getUser?id=${this.id_user}`).then((res)=>{
+                axios.get(`https://koperasi-spa.herokuapp.com/api/getUser?id=${this.id_user}`).then((res)=>{
                     this.user = res.data.data
                 })
             }
             this.$watch('id_user',function(){
                 this.id_user = localStorage.getItem('adnajdnajdajdasjdadajnj')
-                axios.get(`api/getUser?id=${this.id_user}`).then((res)=>{
+                axios.get(`https://koperasi-spa.herokuapp.com/api/getUser?id=${this.id_user}`).then((res)=>{
                     this.user = res.data.data
                 })
             })

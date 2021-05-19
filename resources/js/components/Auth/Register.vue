@@ -91,7 +91,7 @@ export default {
         this.loading = true;
         if (this.$refs.formRegis.validate()) {
           axios
-            .post("http://127.0.0.1:8000/api/tambahUser", {
+            .post("https://koperasi-spa.herokuapp.com/api/tambahUser", {
               nama: this.nama,
               username: this.username,
               password: this.password,

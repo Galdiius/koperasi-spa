@@ -27,7 +27,7 @@
                     <p class="card-text"><pre>  {{ data[0].jumlah_bayar }}</pre></p>
                 </div>
                 <div class="card-footer text-muted">
-                    <VueQrcode :value="`http://localhost:8000/print/${this.$route.params.id}`"/>
+                    <VueQrcode :value="`https://koperasi-spa.herokuapp.com/print/${this.$route.params.id}`"/>
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
 <script>
 import axios from 'axios'
 import VueQrcode from 'vue-qrcode'
-axios.defaults.baseURL = 'http://localhost:8000';
+axios.defaults.baseURL = 'https://koperasi-spa.herokuapp.com/';
 export default {
     components : {
         VueQrcode

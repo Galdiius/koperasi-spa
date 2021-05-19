@@ -25,7 +25,7 @@ export default {
   mounted(){
     this.$refs.calendar.checkChange()
     if(localStorage.getItem('kode_anggota')){
-      axios.get(`api/getAngsuranById?id=${localStorage.getItem('kode_anggota')}`).then(res=>{
+      axios.get(`https://koperasi-spa.herokuapp.com/api/getAngsuranById?id=${localStorage.getItem('kode_anggota')}`).then(res=>{
         res.data.data.forEach(v => {
           let obj = {
             name : "Tagihan",

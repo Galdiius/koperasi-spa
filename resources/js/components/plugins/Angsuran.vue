@@ -57,12 +57,12 @@ export default {
     mounted(){
         this.$watch('data',function(){
             this.id = this.data.id_pinjaman
-            axios.get(`api/getAngsuran?id=${this.id}`).then(res=>{
+            axios.get(`https://koperasi-spa.herokuapp.com/api/getAngsuran?id=${this.id}`).then(res=>{
                 this.angsuran = res.data.data
             })
         })
         this.id = this.data.id_pinjaman
-        axios.get(`api/getAngsuran?id=${this.id}`).then(res=>{
+        axios.get(`https://koperasi-spa.herokuapp.com/api/getAngsuran?id=${this.id}`).then(res=>{
             this.angsuran = res.data.data
         })
             console.log(this.data)
@@ -86,7 +86,7 @@ export default {
                 confirmButtonText: 'Yes'
             }).then(res=>{
                 if(res.value){
-                    axios.post('api/bayarAngsuran',{id_angsuran : id_angsuran,id_pinjaman:id_pinjaman,jumlah:jumlah,id_user:localStorage.getItem('adnajdnajdajdasjdadajnj'),kode_anggota : this.data.kode_anggota}).then(res=>{
+                    axios.post('https://koperasi-spa.herokuapp.com/api/bayarAngsuran',{id_angsuran : id_angsuran,id_pinjaman:id_pinjaman,jumlah:jumlah,id_user:localStorage.getItem('adnajdnajdajdasjdadajnj'),kode_anggota : this.data.kode_anggota}).then(res=>{
                         if(res.data.dialog == "buka"){
                             this.angsuran = res.data.angsuran
                             this.$fire({
