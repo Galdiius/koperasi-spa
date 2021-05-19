@@ -35,18 +35,28 @@ class SimpananController extends Controller
             $cekSimpanan = DB::table('simpanan')->where('kode_anggota',$kode_anggota[1])->where('id_jenis','1')->get();
             if($id_jenis == '1'){
                 if($cekSimpanan->count() < 1){
-                    $data = [
-                        "id_jenis" => $id_jenis,
-                        "jumlah" => $jumlah,
-                        "kode_anggota" => $kode_anggota[1],
-                        "id_user" => $id_user,
-                        "hash" => password_hash($jumlah,PASSWORD_DEFAULT)
-                    ];
-                    DB::table('simpanan')->insert($data);
-                    $this->insertHistory($kode_anggota[1],$id_jenis,$jumlah,$id_user);
-                    return json_encode([
-                        "message" => "berhasil",
-                        "data" => $this->dataSimpanan()
+                    DB::transaction(function() use ($id_jenis,$jumlah,$kode_anggota,$id_user){
+                        $data = [
+                            "id_jenis" => $id_jenis,
+                            "jumlah" => $jumlah,
+                            "kode_anggota" => $kode_anggota[1],
+                            "id_user" => $id_user,
+                            "hash" => password_hash($jumlah,PASSWORD_DEFAULT)
+                        ];
+                        DB::table('simpanan')->insert($data);
+                        $cekAnggota = DB::table('saldo')->where('kode_anggota',$kode_anggota[1])->get();
+                        if($cekAnggota->count() < 1){
+                            DB::table('saldo')->insert([
+                                "kode_anggota" => $kode_anggota[1],
+                                "jumlah" => $jumlah
+                            ]);
+                        }
+                            
+                        $this->insertHistory($kode_anggota[1],$id_jenis,$jumlah,$id_user);
+                    });
+                        return json_encode([
+                            "message" => "berhasil",
+                            "data" => $this->dataSimpanan()
                         ]);
                     }else{
                         return json_encode([
@@ -63,6 +73,12 @@ class SimpananController extends Controller
                         "hash" => password_hash($jumlah,PASSWORD_DEFAULT)
                     ];
                     DB::table('simpanan')->insert($data);
+                    $cekAnggota = DB::table('saldo')->where('kode_anggota',$kode_anggota[1])->get();
+                    if($cekAnggota->count() >= 1){
+                        DB::table('saldo')->where('kode_anggota',$kode_anggota[1])->update([
+                            "jumlah" => $cekAnggota[0]->jumlah + $jumlah
+                        ]);
+                    }
                     $this->insertHistory($kode_anggota[1],$id_jenis,$jumlah,$id_user);
                     return json_encode([
                         "message" => "berhasil",
