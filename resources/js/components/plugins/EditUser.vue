@@ -29,7 +29,7 @@
                     </v-text-field>
                     <v-select :items="itemLevel" v-model="level" label="Pilih level"></v-select>
                     <v-card-actions class="justify-end">
-                        <v-btn color="success" @click="submit">Submit</v-btn>
+                        <v-btn color="success" @click="submit" :loading="loading">Submit</v-btn>
                         <v-btn
                             color="error"
                             @click="dialog.value = false"
@@ -57,6 +57,7 @@ export default {
         return {
             itemLevel : ["Admin","Petugas"],
             nama : this.user.nama,
+            loading : false,
             value : true,
             level : this.user.level,
             username : this.user.username,
@@ -66,6 +67,7 @@ export default {
     methods:{
         submit(){
             if(this.$refs.formEdit.validate()){
+                this.loading = true
                 axios.post('api/editUser',{
                   id : this.user.id_user,
                   nama : this.nama,
@@ -74,6 +76,7 @@ export default {
                   password : this.password
                 }).then(res=>{
                   if(res.data.message == "berhasil"){
+                    this.loading = false
                     this.$fire({
                       title : "Berhasil",
                       text : "Data berhasil diubah",
@@ -81,6 +84,13 @@ export default {
                     });
                     this.$emit('update',res.data.data)
                   }
+                }).catch(e=>{
+                  this.loading = false
+                  this.$fire({
+                    title : "Error",
+                    text : "Terjadi kesalahan silahkan coba lagi",
+                    type : "error"
+                  });
                 })
             }
         }

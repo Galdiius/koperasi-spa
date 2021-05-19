@@ -4849,6 +4849,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       itemLevel: ["Admin", "Petugas"],
       nama: this.user.nama,
+      loading: false,
       value: true,
       level: this.user.level,
       username: this.user.username,
@@ -4860,6 +4861,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       if (this.$refs.formEdit.validate()) {
+        this.loading = true;
         axios__WEBPACK_IMPORTED_MODULE_0___default().post('api/editUser', {
           id: this.user.id_user,
           nama: this.nama,
@@ -4868,6 +4870,8 @@ __webpack_require__.r(__webpack_exports__);
           password: this.password
         }).then(function (res) {
           if (res.data.message == "berhasil") {
+            _this.loading = false;
+
             _this.$fire({
               title: "Berhasil",
               text: "Data berhasil diubah",
@@ -4876,6 +4880,14 @@ __webpack_require__.r(__webpack_exports__);
 
             _this.$emit('update', res.data.data);
           }
+        })["catch"](function (e) {
+          _this.loading = false;
+
+          _this.$fire({
+            title: "Error",
+            text: "Terjadi kesalahan silahkan coba lagi",
+            type: "error"
+          });
         });
       }
     }
@@ -26134,7 +26146,10 @@ var render = function() {
                             _c(
                               "v-btn",
                               {
-                                attrs: { color: "success" },
+                                attrs: {
+                                  color: "success",
+                                  loading: _vm.loading
+                                },
                                 on: { click: _vm.submit }
                               },
                               [_vm._v("Submit")]
