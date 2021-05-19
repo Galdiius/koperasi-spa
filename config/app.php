@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://koperasi-spa.herokuapp.com/'),
+    'url' => 'https://koperasi-spa.herokuapp.com/',
 
     'asset_url' => env('ASSET_URL', null),
 
