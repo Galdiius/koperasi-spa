@@ -46,7 +46,7 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => 'pkl1.4visionmedia.net',
+            'host' => env('DB_HOST','127.0.0.1'),
             'port' => '3306',
             'database' => 'pkl4vm1_koperasi',
             'username' => 'pkl4vm1_pkl4vm1',
