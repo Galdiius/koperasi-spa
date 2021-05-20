@@ -32,15 +32,15 @@ class UserController extends Controller
                 }
             }else{
                 if(password_verify($password,$user->password)){
-                $data = [
-                    "nama" => $nama,
-                    "username" => $username
-                ];
-                Users::where('id_user',$request->id)->update($data);
-                return json_encode([
-                    "message" => "berhasil"
-                ]);
-            }
+                    $data = [
+                        "nama" => $nama,
+                        "username" => $username
+                    ];
+                    Users::where('id_user',$request->id)->update($data);
+                    return json_encode([
+                        "message" => "berhasil"
+                    ]);
+                }
         }
     }
     public function User(){

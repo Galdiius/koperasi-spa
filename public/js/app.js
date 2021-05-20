@@ -1924,6 +1924,8 @@ __webpack_require__.r(__webpack_exports__);
       }],
       newPassRule: [function (v) {
         return !!v || "Field harus di isi";
+      }, function (v) {
+        return v.length >= 8 || "Panjang password minimal 8 karakter";
       }],
       conNewPassRule: [function (v) {
         return !!v || "Field harus di isi";
@@ -1992,6 +1994,12 @@ __webpack_require__.r(__webpack_exports__);
                     _this2.nama = _this2.user.nama;
                     _this2.username = _this2.user.username;
                   });
+                } else {
+                  _this2.$fire({
+                    title: "Error",
+                    text: 'Password yang anda masukan salah',
+                    type: 'error'
+                  });
                 }
               });
             } else {
@@ -2009,6 +2017,7 @@ __webpack_require__.r(__webpack_exports__);
               username: this.username,
               password: this.password
             }).then(function (res) {
+              console.log(res);
               _this2.loadingBtn = false;
 
               if (res.data.message == "berhasil") {
@@ -2023,6 +2032,12 @@ __webpack_require__.r(__webpack_exports__);
                   _this2.user = res.data.data;
                   _this2.nama = _this2.user.nama;
                   _this2.username = _this2.user.username;
+                });
+              } else {
+                _this2.$fire({
+                  title: "Error",
+                  text: 'Password yang anda masukan salah',
+                  type: 'error'
                 });
               }
             });

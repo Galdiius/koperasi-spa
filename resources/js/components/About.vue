@@ -74,7 +74,8 @@ export default {
                 v => !!v || "Username tidak boleh kosong"
             ],
             newPassRule : [
-                v => !!v || "Field harus di isi"
+                v => !!v || "Field harus di isi",
+                v => v.length >= 8 || "Panjang password minimal 8 karakter"
             ],
             conNewPassRule : [
                 v => !!v || "Field harus di isi"
@@ -136,6 +137,12 @@ export default {
                                         this.nama = this.user.nama
                                         this.username = this.user.username
                                     })
+                                }else{
+                                    this.$fire({
+                                        title : "Error",
+                                        text : 'Password yang anda masukan salah',
+                                        type : 'error'
+                                    })
                                 }
                             })
                         }else{
@@ -153,6 +160,7 @@ export default {
                             username : this.username,
                             password : this.password
                         }).then(res=>{
+                            console.log(res);
                             this.loadingBtn = false
                             if(res.data.message == "berhasil"){
                                 this.$fire({
@@ -165,6 +173,12 @@ export default {
                                     this.user = res.data.data
                                     this.nama = this.user.nama
                                     this.username = this.user.username
+                                })
+                            }else{
+                                this.$fire({
+                                    title : "Error",
+                                    text : 'Password yang anda masukan salah',
+                                    type : 'error'
                                 })
                             }
                         })
